@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For in Loop</title>
+</head>
+
+<body>
+    <script>
+        // Iterate(loop) over the properties of an object:
+
+        const person = { fname: "John", lname: "Doe", age: 25 };
+        let text = "";
+        for (let x in person) {
+            text += person[x] + " ";
+        }
+
+
+        // Iterate(loop) over the values of an array:
+
+        const cars = ["BMW", "Volvo", "Saab", "Ford"];
+        let text1 = "";
+        for (let x in cars) {
+            text1 += cars[x] + " ";
+        }
+    </script>
+</body>
+
+</html>
