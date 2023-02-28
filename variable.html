@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var x = 10;
+        var y = 20;
+        var z = x + y;
+        document.write(z);
+
+
+        function abc() {
+            var x = 10;//local variable  
+        }
+
+        if (10 < 13) {
+            var y = 20;//JavaScript local variable  
+        }
+
+
+
+        var data = 200;//gloabal variable  
+        function a() {
+            document.writeln(data);
+        }
+        function b() {
+            document.writeln(data);
+        }
+        a();//calling JavaScript function  
+        b();
+
+
+
+        function m() {
+            window.value = 100;//declaring global variable by window object  
+        }
+        function n() {
+            alert(window.value);//accessing global variable from other function  
+        }
+
+
+        // Internals of global variable in JavaScript
+        var value = 50;
+        function a() {
+            alert(window.value);//accessing global variable   
+        }  
+    </script>
+</body>
+
+</html>
