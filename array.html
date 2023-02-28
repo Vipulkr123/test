@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+    <script>
+        // Array literal
+
+        var emp = ["Vipul", "Kunal", "Divu"];
+        for (i = 0; i < emp.length; i++) {
+            document.write(emp[i] + "<br/>");
+        }
+
+        //Array usinh new keyword
+
+        var i;
+        var emp = new Array();
+        emp[0] = "Vipul";
+        emp[1] = "Atul";
+        emp[2] = "Aman";
+
+        for (i = 0; i < emp.length; i++) {
+            document.write(emp[i] + "<br>");
+        }
+
+        // Array using constructor
+
+        var student = new Array('Vipul', 'Atul', 'Aman');
+        for (var i = 0; i < student.length; i++) {
+            document.write(student[i] + "<br>");
+        }
+    </script>
+</body>
+
+</html>
