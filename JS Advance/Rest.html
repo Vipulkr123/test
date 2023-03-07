@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Operator</title>
+</head>
+
+<body>
+    <script>
+        function add(a, b, ...others) {
+            others.push(a)
+            others.push(b)
+            return others.reduce((a, b) => (a + b), 0);
+        }
+        const result = add(3, 5, 7, 2, 9, 14);
+        console.log(result);
+
+        const students = {
+            name: 'Vipul',
+            age: 23,
+            hobbies: ['Music', 'Movies', 'Web series']
+        }
+        // combining multiple parameter using rest operator
+        const { ...others } = students;
+        console.log(others);
+
+        // appending a new objwct using spread operator
+        let newObject = { ...students, name: 'Divu', age: 5, hobbies: ['Music', 'Movies'] }
+        console.log(newObject);
+    </script>
+</body>
+
+</html>

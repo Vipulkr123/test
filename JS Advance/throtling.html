@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+    <style>
+        .demo {
+            width: 300px;
+            height: 20px;
+            border: 2px solid red;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn" onclick="ThrottleFun()">Click</button>
+    <p id="print"></p>
+    <script>
+        const myThrottle = (call, d) => {
+            return function (...args) {
+                document.getElementById("btn").disabled = true;
+                setTimeout(() => {
+                    call();
+                }, d);
+            }
+        }
+        let counter = 0;
+        const ThrottleFun = myThrottle(() => {
+            document.getElementById("btn").disabled = false;
+            document.getElementById("print").innerText = "fetching data..." + counter++;
+        }, 5000);
+
+    </script>
+</body>
+
+</html>

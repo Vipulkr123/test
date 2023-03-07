@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Desturturing</title>
+</head>
+
+<body>
+    <script>
+        const myBio = {
+            name: 'Vipul Kumar',
+            age: 30,
+            deg: 'B.tech',
+            hobby: {
+                first: 'Playing Games',
+                second: 'Watching Movies'
+            }
+        }
+        let { name: myname, age, deg, hobby } = myBio;
+        console.log(`My name is ${myname} and age is ${age} and deg is ${deg}. I love to ${hobby.second}`);
+    </script>
+</body>
+
+</html>

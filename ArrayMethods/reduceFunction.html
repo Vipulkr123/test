@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Function</title>
+</head>
+
+<body>
+    <script>
+        const ages = [33, 23, 25, 16, 19, 12, 6, 43, 7, 23, 44, 63];
+
+
+        let total = 0;
+        for (let i = 0; i < ages.length; i++) {
+            total += ages[i];
+        }
+        console.log(total);
+        const age = ages.reduce((a, b) => (a + b), 0);
+        console.log(age);
+    </script>
+</body>
+
+</html>

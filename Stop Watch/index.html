@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stopwatch</title>
+    <style>
+        /* Style for the stopwatch */
+        .stopwatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .stopwatch-display {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .stopwatch-buttons button {
+            font-size: 1rem;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stopwatch">
+        <div class="stopwatch-display">00:00:00</div>
+        <div class="stopwatch-buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Stopwatch code
+        const stopwatchDisplay = document.querySelector(".stopwatch-display");
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+        let timer;
+
+        const formatTime = (time) => {
+            return time < 10 ? "0" + time : time;
+        };
+
+        const displayTime = () => {
+            stopwatchDisplay.textContent = `${formatTime(
+                hours
+            )}:${formatTime(minutes)}:${formatTime(seconds)}`;
+        };
+
+        const startTimer = () => {
+            timer = setInterval(() => {
+                seconds++;
+                if (seconds === 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+                displayTime();
+            }, 1000);
+        };
+
+        const stopTimer = () => {
+            clearInterval(timer);
+        };
+
+        const resetTimer = () => {
+            clearInterval(timer);
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            displayTime();
+        };
+
+        const startButton = document.getElementById("start");
+        const stopButton = document.getElementById("stop");
+        const resetButton = document.getElementById("reset");
+
+        startButton.addEventListener("click", startTimer);
+        stopButton.addEventListener("click", stopTimer);
+        resetButton.addEventListener("click", resetTimer);
+    </script>
+</body>
+
+</html>

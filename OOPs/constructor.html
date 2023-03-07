@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor</title>
+</head>
+
+<body>
+    <script>
+        class student {
+
+            // This is a consturctor method in javascript
+            constructor(name, age, dept) {
+                this.name = name;
+                this.age = age;
+                this.dept = dept;
+            }
+            static clg = 'Marwadi University';
+
+            // This is a Prototype method in javascript 
+            studentDetails() {
+                document.write(`Name : ${this.name} </br>`);
+                document.write(`Age : ${this.age}</br>`);
+                document.write(`Dept : ${this.dept}`);
+            }
+
+            // This is a static method in javascript 
+
+            static studentDetail(name, age, dept) {
+                document.write(`Name : ${name} </br>`);
+                document.write(`Age : ${age}</br>`);
+                document.write(`Dept : ${dept} </br>`);
+                document.write(`College : ${this.clg}`);
+            }
+        }
+        // let obj = new student('Vipul', 23, 'Computer');  // creatin an object
+        // obj.studentDetails();
+        student.studentDetail('Vipul', 23, 'Computer');
+    </script>
+</body>
+
+</html>

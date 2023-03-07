@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind Method</title>
+</head>
+
+<body>
+    <script>
+        const person = {
+            name: 'Vipul Kumar',
+            email: 'vipul@gmail.com',
+            from: 'Ahmedabad,Gujarat',
+            about: function () {
+                console.log(`I am ${this.name}.
+                 my email is ${this.email}. 
+                 I am from ${this.from}.`);
+            }
+        }
+
+        //This is bind method It takes object as first argument
+        let AboutPerson = person.about.bind(person);
+        //AboutPerson();
+
+
+
+        // we can also bind method with different -different object 
+
+        const person1 = {
+            name: 'Vipul Kumar',
+            email: 'vipul@gmail.com',
+            from: 'Ahmedabad,Gujarat',
+        }
+        const person2 = {
+            name: 'Divu',
+            email: 'divu@gmail.com',
+            from: 'Delhi,India',
+        }
+        const person3 = {
+            name: 'Rahul Kumar',
+            email: 'rahul@gmail.com',
+            from: 'Vadodadra,Gujarat',
+        }
+        function about() {
+            console.log(`I am ${this.name}.
+                 my email is ${this.email}. 
+                 I am from ${this.from}.`);
+        }
+
+        let aboutVipul = about.bind(person1);
+        aboutVipul(); //here we can also pass arguments
+        let aboutDivu = about.bind(person2);
+        aboutDivu();
+        let aboutRahul = about.bind(person3);
+        aboutRahul();
+
+    </script>
+</body>
+
+</html>

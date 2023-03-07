@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stopwatch</title>
+    <style>
+        /* Style for the stopwatch */
+        .stopwatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .stopwatch-display {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .stopwatch-buttons button {
+            font-size: 1rem;
+            padding: 5px 10px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stopwatch">
+        <div class="stopwatch-display">00:00:00</div>
+        <div class="stopwatch-buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Stopwatch code
+        const stopwatchDisplay = document.querySelector(".stopwatch-display");
+        const startButton = document.getElementById("start");
+        const stopButton = document.getElementById("stop");
+        const resetButton = document.getElementById("reset");
+        let startTime;
+        let elapsedTime = 0;
+        let timerId;
+
+        const formatTime = (time) => {
+            return time < 10 ? "0" + time : time;
+        };
+
+        const displayTime = () => {
+            const elapsed = new Date(elapsedTime);
+            const hours = elapsed.getUTCHours();
+            const minutes = elapsed.getUTCMinutes();
+            const seconds = elapsed.getUTCSeconds();
+            const milliseconds = elapsed.getUTCMilliseconds();
+            stopwatchDisplay.textContent = `${formatTime(
+                hours
+            )}:${formatTime(minutes)}:${formatTime(seconds)}.${milliseconds}`;
+        };
+
+        const startTimer = () => {
+            startTime = Date.now() - elapsedTime;
+            const tick = () => {
+                elapsedTime = Date.now() - startTime;
+                displayTime();
+                timerId = requestAnimationFrame(tick);
+            };
+            tick();
+        };
+
+        const stopTimer = () => {
+            cancelAnimationFrame(timerId);
+        };
+
+        const resetTimer = () => {
+            cancelAnimationFrame(timerId);
+            elapsedTime = 0;
+            displayTime();
+        };
+
+        startButton.addEventListener("click", startTimer);
+        stopButton.addEventListener("click", stopTimer);
+        resetButton.addEventListener("click", resetTimer);
+    </script>
+</body>
+
+</html>

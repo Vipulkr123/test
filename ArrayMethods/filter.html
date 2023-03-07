@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Method</title>
+</head>
+
+<body>
+    <script>
+        const ages = [33, 23, 25, 16, 19, 12, 6, 43, 7, 23, 44, 63];
+        // for (let i = 0; i < ages.length; i++) {
+        //     if (ages[i] >= 30) {
+        //         console.log(ages[i]);
+        //     }
+        // }
+
+        // const age = ages.filter((age) => {
+        //     if (age >= 30) return true;
+        // });
+        // console.log(age);
+
+        const age = ages.filter(age => age >= 30);
+        console.log(age);
+
+        const companies = [
+            { name: 'Google', category: 'Product Based', start: 1981, end: 2020 },
+            { name: 'Amazon', category: 'Product Based', start: 1992, end: 2007 },
+            { name: 'Paytm', category: 'Product Based', start: 1999, end: 2000 },
+            { name: 'Mindtree', category: 'Service Based', start: 1989, end: 2010 },
+            { name: 'Simform', category: 'Service Based', start: 2004, end: 2025 }
+
+        ];
+
+        const company = companies.filter(company => company.category === 'Service Based');
+        console.log(company);
+    </script>
+</body>
+
+</html>

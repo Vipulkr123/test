@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance</title>
+</head>
+
+<body>
+    <script>
+        class grandParent {
+            constructor() {
+                document.write('This is GrandParent Constructer<br>');
+            }
+            myMethod() {
+                document.write('This is GrandParent Method');
+            }
+        }
+        class Parent extends grandParent {
+            constructor() {
+                super();
+                document.write('This is Parent Constructer<br>');
+            }
+            myMethod1() {
+                document.write('This is Parent Method');
+            }
+        }
+        class child extends Parent {
+            constructor() {
+                super();
+                document.write('This is Child Constructer<br>');
+            }
+            myMethod() {
+                document.write('This is Child Method');
+            }
+        }
+
+        let childobj = new child();
+        childobj.myMethod1();
+    </script>
+</body>
+
+</html>

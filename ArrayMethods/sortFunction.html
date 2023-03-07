@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Function</title>
+</head>
+
+<body>
+    <script>
+        const companies = [
+            { name: 'Google', category: 'Product Based', start: 1981, end: 2020 },
+            { name: 'Amazon', category: 'Product Based', start: 1992, end: 2007 },
+            { name: 'Paytm', category: 'Product Based', start: 1999, end: 2000 },
+            { name: 'Mindtree', category: 'Service Based', start: 1989, end: 2010 },
+            { name: 'Simform', category: 'Service Based', start: 2004, end: 2025 }
+
+        ];
+
+
+
+        const SortedCompany = companies.sort((a, b) => a.start < b.start ? -1 : 1);
+        console.log(SortedCompany);
+
+        const ages = [33, 23, 25, 16, 19, 12, 6, 43, 7, 23, 44, 63];
+
+        const SortedAge = ages.sort((a, b) => a - b);
+        console.log(SortedAge);
+    </script>
+</body>
+
+</html>

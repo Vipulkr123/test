@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Traffic Signal</title>
+    <style>
+        /* Style for the traffic signal */
+        .traffic-signal {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            width: 100px;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 10px;
+        }
+
+        .light {
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traffic-signal">
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div>
+
+    <script>
+        // Traffic Signal code
+        const redLight = document.querySelector(".red");
+        const yellowLight = document.querySelector(".yellow");
+        const greenLight = document.querySelector(".green");
+
+        function turnOnRedLight() {
+            redLight.style.backgroundColor = "red";
+            yellowLight.style.backgroundColor = "black";
+            greenLight.style.backgroundColor = "black";
+        }
+
+        function turnOnYellowLight() {
+            redLight.style.backgroundColor = "black";
+            yellowLight.style.backgroundColor = "yellow";
+            greenLight.style.backgroundColor = "black";
+        }
+
+        function turnOnGreenLight() {
+            redLight.style.backgroundColor = "black";
+            yellowLight.style.backgroundColor = "black";
+            greenLight.style.backgroundColor = "green";
+        }
+
+        setInterval(() => {
+            turnOnRedLight();
+            setTimeout(() => {
+                turnOnYellowLight();
+                setTimeout(() => {
+                    turnOnGreenLight();
+                }, 2000);
+            }, 2000);
+        }, 6000);
+    </script>
+</body>
+
+</html>
