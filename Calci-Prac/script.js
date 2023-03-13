@@ -1,72 +1,82 @@
-const numberBtn = document.querySelectorAll('[data-number]');
-const operationBtn = document.querySelectorAll('[data-operation]');
-const equalsBtn = document.querySelector('[data-equals]');
-const deleteBtn = document.querySelector('[data-delete]');
-const clearAllBtn = document.querySelector('[data-clearAll]');
-const prevDispElement = document.querySelector('[data-previousOperand]');
-const currDispElement = document.querySelector('[data-currentOperand]');
+// console.log(calculateLogarithm(2, 2));
+// function calculateLogarithm(base, x) {
+//     var a = Math.log(x);
+//     var b = Math.log(base);
+//     return a / b;
+// };
 
-class Calculator {
-    constructor(prevDispElement, currDispElement) {
-        this.prevDispElement = prevDispElement;
-        this.currDispElement = currDispElement;
-    }
+// Logarithm with custom base:
+//                               base    x               y
+// console.log(calculateLogarithm(2, 2)); //  1
+// console.log(calculateLogarithm(2, 4)); //  2
+// console.log(calculateLogarithm(Math.E, Math.E)); //  1
+// console.log(calculateLogarithm(3, 9)); // ~2
+// console.log(calculateLogarithm(3, 81)); // ~4
+// console.log(calculateLogarithm(10, 10)); //  1
 
-    clear() {
-        this.currDispElement.dataset.currentoperand = '';
-        // this.prevOperand = '';
-        // this.operation = undefined;
-    }
 
-    delete() {
-        this.currDispElement.dataset.currentoperand = this.currDispElement.dataset.currentoperand.toString().slice(0, -1);;
-    }
 
-    appendNumber(number) {
-        if (number === '.' && this.currDispElement.dataset.currentoperand.includes('.')) return;
-        this.currDispElement.dataset.currentoperand += number.toString();
-    }
 
-    chooseOperation(operation) {
-        // if ()
-    }
 
-    calculate() {
 
-    }
 
-    updateDisplay(num) {
-        this.currDispElement.textContent = this.currDispElement.dataset.currentoperand;
-        console.log(this.currDispElement.dataset.currentoperand);
-    }
-}
 
-const calculator = new Calculator(prevDispElement, currDispElement);
 
-numberBtn.forEach(button => {
-    button.addEventListener('click', (e) => {
-        // var num = calculator.appendNumber(button.innerText);
-        var num = e.target.value;
-        console.log(num);
-        calculator.appendNumber(num);
-        calculator.updateDisplay(num);
-    })
-})
 
-operationBtn.forEach(button => {
-    button.addEventListener('click', (e) => {
-        var plus = calculator.chooseOperation(e.target.value);
-        console.log(plus);
-        calculator.updateDisplay();
-    })
-})
+// const squareBtn = document.querySelector('[data-square]');
+// const cubeBtn = document.querySelector('[data-cube]');
+// const sqrtBtn = document.querySelector('[data-sqrt]');
+// const factBtn = document.querySelector('[data-fact]');
+// const xpoweryBtn = document.querySelector('[data-xpowery]');
+// const onebyx = document.querySelector('[data-onebyx]');
+// const tenPowerxBtn = document.querySelector('[data-tenpow-x]');
+// const equalsButton = document.querySelector('[data-equals]');
+// const deleteButton = document.querySelector('[data-delete]');
+// const allClearButton = document.querySelector('[data-clearAll]');
 
-clearAllBtn.addEventListener('click', (e) => {
-    calculator.clear(e.innerText);
-    calculator.updateDisplay();
-})
 
-deleteBtn.addEventListener('click', (e) => {
-    calculator.delete(e.target.value);
-    calculator.updateDisplay();
-})
+// equalsButton.addEventListener('click', button => {
+//     calculator.compute();
+//     calculator.updateDisplay();
+// });
+
+// allClearButton.addEventListener('click', button => {
+//     calculator.clear();
+//     calculator.updateDisplay();
+// });
+
+// deleteButton.addEventListener('click', button => {
+//     calculator.delete();
+//     calculator.updateDisplay();
+// });
+
+// squareBtn.addEventListener('click', button => {
+//     calculator.square();
+//     calculator.updateDisplay();
+// });
+
+// sqrtBtn.addEventListener('click', button => {
+//     calculator.squareRoot();
+//     calculator.updateDisplay();
+// });
+
+// factBtn.addEventListener('click', button => {
+//     calculator.factorialCal();
+//     calculator.updateDisplay();
+// });
+
+// onebyx.addEventListener('click', button => {
+//     calculator.onebyx();
+//     calculator.updateDisplay();
+// });
+
+// xpoweryBtn.addEventListener('click', button => {
+//     var abc = calculator.xpowery(button.target.innerText);
+//     console.log(abc);
+//     calculator.updateDisplay();
+// });
+
+// tenPowerxBtn.addEventListener('click', button => {
+//     calculator.tenpowerx();
+//     calculator.updateDisplay();
+// });
