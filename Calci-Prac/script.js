@@ -80,3 +80,10 @@
 //     calculator.tenpowerx();
 //     calculator.updateDisplay();
 // });
+
+// mod() {
+//     let computation;
+//     const prev = parseInt(this.previousOperand);
+//     const current = parseInt(this.currentOperand);
+//     computation = prev % current;
+// }

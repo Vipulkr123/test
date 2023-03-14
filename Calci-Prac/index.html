@@ -25,12 +25,6 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label for="memory" class="memory" id="memory">Memory : </label>
-                        <p class="display-memory" id="disp_memory"></p>
-                    </td>
-                </tr>
             </thead>
 
             <tbody class="actions">
@@ -44,12 +38,37 @@
                 </tr>
                 <tr>
                     <td colspan="5" class="in-btn">
-                        <button class="btn-top" value=''>MC</button>
-                        <button class="btn-top" value=''>MR</button>
-                        <button class="btn-top" value=''>M+</button>
-                        <button class="btn-top" value=''>M-</button>
-                        <button class="btn-top" value=''>MS</button>
-                        <button class="btn-top" value=''>M <i class="fa-solid fa-chevron-down"></i></button>
+                        <button class="btn shadow-none btn-top mem" value='MC' disabled>MC</button>
+                        <button class="btn shadow-none btn-top mem" value='MR' disabled>MR</button>
+                        <button class="btn shadow-none btn-top mem" value='M+' disabled>M+</button>
+                        <button class="btn shadow-none btn-top mem" value='M-' disabled>M-</button>
+                        <button class="btn shadow-none btn-top" value='MS'>MS</button>
+                        <button type="button btn-top" class=" btn-primary btn-top" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" value='M'>
+                            <span>M <i class="fa-solid fa-chevron-down"></i></button></span>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Memory</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="memory">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <hr>
 
                     </td>
@@ -80,9 +99,9 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <div class="trigo d-flex">
-                                    <li><button class="fuction dropdown-item">|x|</button></li>
-                                    <li><button class="dropdown-item">cos</button></li>
-                                    <li><button class="dropdown-item">tan</button></li>
+                                    <li><button class="function dropdown-item" value='abs'>|x|</button></li>
+                                    <li><button class="function dropdown-item" value="rand">rand</button></li>
+                                    <li><button class="function dropdown-item">tan</button></li>
                                 </div>
                             </ul>
                         </div>
@@ -91,7 +110,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="btn btn-op" value='*('>2<sup><small>nd</small></sup></button>
+                        <button class="function btn btn-op ms-1" value='nd'>2<sup><small>nd</small></sup></button>
                     </td>
                     <td>
                         <button class="function btn btn-op" value='pi'>π</button>
@@ -109,7 +128,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value='x²'>x²</button>
+                        <button class="ndfun function btn btn-op ms-1" value='x²'>x²</button>
+                        <button class="secondfn function btn btn-op ms-1" value='x³'>x³</button>
                     </td>
                     <td>
                         <button class="function btn btn-op" value='1/x'>1/x</button>
@@ -126,7 +146,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value='sqrt'><sup><small>2</small></sup>√x</button>
+                        <button class="ndfun function btn btn-op ms-1"
+                            value='sqrt'><sup><small>2</small></sup>√x</button>
+                        <button class="secondfn function btn btn-op ms-1"
+                            value='cbrt'><sup><small>3</small></sup>√x</button>
                     </td>
                     <td>
                         <button class="btn btn-op" value='*('>(</button>
@@ -143,16 +166,18 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value='xpy' data-opration>x<sup>y</sup></button>
+                        <button class="ndfun function btn btn-op ms-1" value='^' data-xpowery>x<sup>y</sup></button>
+                        <button class="secondfn function btn btn-op ms-1" value='√'
+                            data-xrooty><sup><small>y</small></sup>√x</button>
                     </td>
                     <td>
-                        <button class="btn" value='7' data-number>7</button>
+                        <button class="btn num" value='7' data-number>7</button>
                     </td>
                     <td>
-                        <button class="btn" value='8' data-number>8</button>
+                        <button class="btn num" value='8' data-number>8</button>
                     </td>
                     <td>
-                        <button class="btn" value='9' data-number>9</button>
+                        <button class="btn num" value='9' data-number>9</button>
                     </td>
                     <td>
                         <button class="btn btn-op" value='*' data-opration>x</button>
@@ -160,16 +185,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value='tenx'>10<sup>x</sup></button>
+                        <button class="ndfun function btn btn-op ms-1" value='tenx'>10<sup>x</sup></button>
+                        <button class="secondfn function btn btn-op ms-1" value='twox'>2<sup>x</sup></button>
                     </td>
                     <td>
-                        <button class="btn" value='4' data-number>4</button>
+                        <button class="btn num" value='4' data-number>4</button>
                     </td>
                     <td>
-                        <button class="btn" value='5' data-number>5</button>
+                        <button class="btn num" value='5' data-number>5</button>
                     </td>
                     <td>
-                        <button class="btn" value='6' data-number>6</button>
+                        <button class="btn num" value='6' data-number>6</button>
                     </td>
                     <td>
                         <button class="btn btn-op" value='-' data-opration> -</button>
@@ -178,16 +204,17 @@
 
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value='log'>log</button>
+                        <button class="ndfun function btn btn-op ms-1" value='log'>log</button>
+                        <button class="secondfn function btn btn-op ms-1" value='log'>logy<sup>x</sup></button>
                     </td>
                     <td>
-                        <button class="btn" value='1' data-number>1</button>
+                        <button class="btn num" value='1' data-number>1</button>
                     </td>
                     <td>
-                        <button class="btn" value='2' data-number>2</button>
+                        <button class="btn num" value='2' data-number>2</button>
                     </td>
                     <td>
-                        <button class="btn" value='3' data-number>3</button>
+                        <button class="btn num" value='3' data-number>3</button>
                     </td>
                     <td>
                         <button class="btn btn-op" value='+' data-opration>+</button>
@@ -195,13 +222,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="function btn btn-op" value="ln">ln</button>
+                        <button class="ndfun function btn btn-op mb-1 ms-1" value="ln">ln</button>
+                        <button class="secondfn function btn btn-op mb-1 ms-1" value="ex">e<sup>x</sup></button>
                     </td>
                     <td>
                         <button class="function btn btn-op" value='minus'>+/-</button>
                     </td>
                     <td>
-                        <button class="btn" value='0' data-number>0</button>
+                        <button class="btn num" value='0' data-number>0</button>
                     </td>
                     <td>
                         <button class="btn btn-op" value='.' data-number>.</button>

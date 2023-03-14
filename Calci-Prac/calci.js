@@ -3,11 +3,17 @@ const operationButtons = document.querySelectorAll('[data-opration]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
 const functionBtn = document.querySelectorAll('.function');
+const xpoweryBtn = document.querySelector('[data-xpowery]');
+const xrootyBtn = document.querySelector('[data-xrooty]');
+const memorySaveBtn = document.querySelectorAll('.btn-top');
+const memoryLoadBtn = document.querySelectorAll('.modal-body');
+let memory;
 
 class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
+    constructor(previousOperandTextElement, currentOperandTextElement, memory = []) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
+        this.memory = memory;
         this.clear();
     }
 
@@ -28,12 +34,6 @@ class Calculator {
     squareRoot() {
         this.currentOperand = Math.sqrt(this.currentOperand);
     }
-    mod() {
-        let computation;
-        const prev = parseInt(this.previousOperand);
-        const current = parseInt(this.currentOperand);
-        computation = prev % current;
-    }
 
     factorialCal() {
         let current = this.currentOperand;
@@ -49,15 +49,12 @@ class Calculator {
         }
     }
 
-    xpowery(operation) {
-        this.operations = this.operations;
-        console.log(this.operations);
-        let x = this.currentOperand;
-        let y = this.previousOperand;
-        let result = x ** y;
-        console.log(result);
-        console.log('x :' + x);
-        console.log(y);
+    cubeRoot() {
+        this.currentOperand = Math.cbrt(this.currentOperand);;
+    }
+
+    cube() {
+        this.currentOperand = Math.pow(this.currentOperand, 3);
     }
 
     onebyx() {
@@ -65,6 +62,10 @@ class Calculator {
     }
     tenpowerx() {
         this.currentOperand = Math.pow(10, this.currentOperand);
+    }
+
+    twopowerx() {
+        this.currentOperand = Math.pow(2, this.currentOperand);
     }
 
     absfun() {
@@ -78,7 +79,6 @@ class Calculator {
         function calculateLogarithm(base, current) {
             var a = Math.log(current);
             var b = Math.log(base);
-            console.log(a / b);
             return a / b;
         };
     }
@@ -98,6 +98,11 @@ class Calculator {
     expfun() {
         this.currentOperand = Math.exp(this.currentOperand);
     }
+
+    exfun() {
+        this.currentOperand = Math.exp(this.currentOperand);
+    }
+
     sinfun() {
         this.currentOperand = Math.sin(this.currentOperand * Math.PI / 180);
     }
@@ -108,6 +113,9 @@ class Calculator {
     tanfun() {
         this.currentOperand = Math.round(Math.tan(this.currentOperand * Math.PI / 180));
     }
+    randfun() {
+        this.currentOperand = Math.random();
+    }
 
     minusCalc() {
         if (this.currentOperand === this.currentOperand) {
@@ -116,6 +124,81 @@ class Calculator {
         else if (this.currentOperand === -this.currentOperand) {
             this.currentOperand = +this.currentOperand;
         }
+    }
+
+    secondfn() {
+        const secondFun = document.querySelectorAll('.ndfun');
+        const secondFn = document.querySelectorAll('.secondfn');
+        if (secondFun[0].style.display !== "none") {
+            secondFun.forEach(element => {
+                element.style = "display:none";
+            });
+            secondFn.forEach(element => {
+                element.style = "display:inline-block !important";
+            });
+        }
+        else {
+            secondFun.forEach(element => {
+                element.style = "display:inline-block!important";
+            });
+            secondFn.forEach(element => {
+                element.style = "display:none";
+            });
+        }
+    }
+
+    chooseMemoryOperation(operation) {
+        switch (operation) {
+            case 'MS':
+                this.memorySave();
+                document.querySelectorAll(".mem").forEach((element) => {
+                    element.disabled = false;
+                });
+                break;
+            case 'MR':
+                this.memoryRead();
+                this.updateDisplay();
+                break;
+            case 'MC':
+                localStorage.clear();
+                document.querySelectorAll(".mem").forEach((element) => {
+                    element.disabled = true;
+                });
+                break;
+            case 'M':
+                this.memoryShow();
+                break;
+            case 'M+':
+                this.chooseOperation('+');
+                this.updateDisplay();
+                break;
+            case 'M-':
+                this.chooseOperation('-');
+                this.updateDisplay();
+                break;
+            default:
+                return;
+        }
+    }
+
+    memorySave() {
+        this.memory.push(this.currentOperand);
+        localStorage.setItem('memory', this.memory);
+    }
+
+    memoryRead() {
+        let result = localStorage.getItem('memory');
+        this.currentOperand = result.split(',').slice(-1);
+
+    }
+
+    memoryShow() {
+        let memValue = localStorage.getItem('memory');
+        var content = '';
+        memValue.split(',').map(element => {
+            content += `<div>${element}</div>`;
+        });
+        document.getElementById('memory').innerHTML = content;
     }
 
     appendNumber(number) {
@@ -129,7 +212,6 @@ class Calculator {
             this.compute();
         }
         this.operation = operation;
-        console.log(this.operation);
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
     }
@@ -154,6 +236,12 @@ class Calculator {
                 break;
             case 'mod':
                 computation = prev % current;
+                break;
+            case '^':
+                computation = prev ** current;
+                break;
+            case '√':
+                computation = Math.pow(prev, 1 / current);
                 break;
             default:
                 return;
@@ -208,6 +296,22 @@ operationButtons.forEach(button => {
     });
 });
 
+xpoweryBtn.addEventListener('click', button => {
+    calculator.chooseOperation(button.target.value);
+    calculator.updateDisplay();
+});
+
+xrootyBtn.addEventListener('click', button => {
+    calculator.chooseOperation(button.target.value);
+    calculator.updateDisplay();
+});
+
+memorySaveBtn.forEach(button => {
+    button.addEventListener('click', (e) => {
+        calculator.chooseMemoryOperation(e.target.value);
+    });
+});
+
 functionBtn.forEach(button => {
     button.addEventListener('click', (e) => {
         var functions = e.target.value;
@@ -224,6 +328,10 @@ functionBtn.forEach(button => {
                 calculator.square();
                 calculator.updateDisplay();
                 break;
+            case 'x³':
+                calculator.cube();
+                calculator.updateDisplay();
+                break;
             case '=':
                 calculator.compute();
                 calculator.updateDisplay();
@@ -234,6 +342,10 @@ functionBtn.forEach(button => {
                 break;
             case 'sqrt':
                 calculator.squareRoot();
+                calculator.updateDisplay();
+                break;
+            case 'cbrt':
+                calculator.cubeRoot();
                 calculator.updateDisplay();
                 break;
             case 'fact':
@@ -256,6 +368,10 @@ functionBtn.forEach(button => {
                 calculator.tenpowerx();
                 calculator.updateDisplay();
                 break;
+            case 'twox':
+                calculator.twopowerx();
+                calculator.updateDisplay();
+                break;
             case 'log':
                 calculator.logfun();
                 calculator.updateDisplay();
@@ -270,6 +386,10 @@ functionBtn.forEach(button => {
                 break;
             case 'e':
                 calculator.efun();
+                calculator.updateDisplay();
+                break;
+            case 'ex':
+                calculator.exfun();
                 calculator.updateDisplay();
                 break;
             case 'exp':
@@ -287,6 +407,13 @@ functionBtn.forEach(button => {
             case 'tan':
                 calculator.tanfun();
                 calculator.updateDisplay();
+                break;
+            case 'rand':
+                calculator.randfun();
+                calculator.updateDisplay();
+                break;
+            case 'nd':
+                calculator.secondfn();
                 break;
             default:
                 return;
